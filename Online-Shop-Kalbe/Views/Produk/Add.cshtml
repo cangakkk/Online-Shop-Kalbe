@@ -1,0 +1,41 @@
+﻿@using KalbeShop.ViewModels
+
+@{
+    Layout = null;
+}
+
+<div class="h2">Add Data</div>
+<br>
+<div class="card">
+    <form id="frmVariant" method="post" asp-action="Add">
+        <div class="card-header">Create New</div>
+        <div class="card-body">
+            <div class="mb-3">
+                <label>Product Code</label>
+                <input type="text" name="TxtProductCode" class="form-control" required/>
+            </div>
+            <div class="mb-3">
+                <label>Product Name</label>
+                <input type="text" name="TxtProductName" class="form-control" required/>
+            </div>
+            <div class="mb-3">
+                <label>Quntity</label>
+                <input type="number" name="IntQty" class="form-control" required/>
+            </div>
+            <div class="mb-3">
+                <label>Price</label>
+                <input type="number" name="DecPrice" class="form-control" required/>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary" id="btnSave">Create</button>
+            <button type="button" class="btn btn-primary" id="btnCancel"> Cancel </button>
+        </div>
+    </form>
+</div>
+
+<script>
+    $("#btnCancel").click(function () {
+        $("#MyModal").modal("hide");
+    });
+</script>

@@ -1,0 +1,46 @@
+﻿@using KalbeShop.ViewModels
+@model VMCustomer
+@{
+    Layout = null;
+}
+
+<div class="h2">Edit Data</div>
+<br>
+<div class="card">
+    <form id="frmVariant" method="post" asp-action="Edit">
+        <div class="card-header">Edit Customer</div>
+        <div class="card-body">
+            <div class="mb-3">
+                <label>Cutomer Name</label>
+                <input type="text" name="TxtCustomerName" class="form-control" value="@Model.TxtCustomerName" required />
+                <input type="hidden" name="IntCustomerId" class="form-control" value="@Model.IntCustomerId" required />
+            </div>
+            <div class="mb-3">
+                <label>Customer Address</label>
+                <input type="text" name="TxtCustomerAddress" class="form-control" value="@Model.TxtCustomerAddress" required />
+            </div>
+           <div class="mb-3">
+                <label>Gender</label>
+                <select name="BitGender" class="form-control" required>
+                    <option>-- Gender -- </option>
+                            <option value="false">Perempuan</option>
+                            <option value="true">Laki-Laki</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label>Tanggal Lahir</label>
+                <input type="date" name="DtmBirthDate" class="form-control" value="@string.Format("{0:yyyy-MM-dd}",Model.DtmBirthDate)" required />
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary" id="btnSave">Save Changes</button>
+            <button type="button" class="btn btn-primary" id="btnCancel"> Cancel </button>
+        </div>
+    </form>
+</div>
+
+<script>
+    $("#btnCancel").click(function () {
+        $("#MyModal").modal("hide");
+    });
+</script>

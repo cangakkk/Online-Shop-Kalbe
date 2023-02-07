@@ -1,0 +1,89 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using KalbeShop.ViewModels
+@model List<VMProduk>
+
+@{
+
+}
+
+<div class="card">
+    <div class="card-header font-weight-bold">
+        Data Pengguna
+    </div>
+    <div class="card-body">
+        <form id="frmFind" asp-action="Index">
+            <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-light" id="btnAdd">Add</button>
+                <div class="input-group w-50">
+                    <input name="Name" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" value="@ViewBag.Name">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search" id="btnFind"></i> </button>
+                </div>
+            </div>
+        </form>
+        <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th class="col-1">Product ID</th>
+                    <th>Product Code</th>
+                    <th>Product Name</th>
+                    <th class="col-3">Quantity</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count == 0)
+                {
+                    <tr>
+                        <td colspan="5">Belum ada data yang bisa ditampilkan</td>
+                    </tr>
+                }
+                else
+                {
+                    @foreach (VMProduk data in Model)
+                    {
+                        <tr>
+                            <th scope="row">@data.IntProductId</th>
+                            <td>@data.TxtProductCode</td>
+                            <td>@data.TxtProductName</td>
+                            <td>@data.IntQty</td>
+                            <td>@data.DecPrice</td>
+                            <td>
+                                <button class="btn btn-success btnEdit" data-dataid="@data.IntProductId" type="button">Edit</button>
+                                @*<button class="btn btn-primary btnDetail" data-dataid="@data.Id" type="submit">Detail</button>*@
+                                <button class="btn btn-danger btnDelete" data-dataid="@data.IntProductId" type="submit"><i class="fas fa-trash-alt"></i> Delete</button>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#btnAdd").click(function () {
+            $("#MyModalBody").load("/Produk/Add");
+            $("#MyModal").modal("show");
+        });
+
+        $("#btnFind").click(function () {
+            $("#frmFind").submit();
+        });
+
+        $(".btnEdit").click(function () {
+            var produkid = $(this).data("dataid");
+            $("#MyModalBody").load("/Produk/Edit?produkid=" + produkid);
+            $("#MyModal").modal("show");
+        });
+
+        $(".btnDelete").click(function () {
+            var produkid = $(this).data("dataid");
+            $("#MyModalBody").load("/Produk/Delete?produkid=" + produkid);
+            $("#MyModal").modal("show");
+        });
+    });
+</script>

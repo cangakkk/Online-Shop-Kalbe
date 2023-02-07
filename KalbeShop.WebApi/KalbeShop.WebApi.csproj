@@ -8,5 +8,11 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\KalbeShop.DataModels\KalbeShop.DataModels.csproj" />
+    <ProjectReference Include="..\KalbeShop.Repo\KalbeShop.Repo.csproj" />
+    <ProjectReference Include="..\KalbeShop.ViewModels\KalbeShop.ViewModels.csproj" />
+  </ItemGroup>
+
 
 </Project>

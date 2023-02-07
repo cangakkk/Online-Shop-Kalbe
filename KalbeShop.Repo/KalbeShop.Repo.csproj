@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\KalbeShop.DataModels\KalbeShop.DataModels.csproj" />
+    <ProjectReference Include="..\KalbeShop.ViewModels\KalbeShop.ViewModels.csproj" />
+  </ItemGroup>
+
 </Project>

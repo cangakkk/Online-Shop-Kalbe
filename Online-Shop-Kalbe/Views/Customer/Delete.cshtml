@@ -1,0 +1,31 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using KalbeShop.ViewModels
+@model VMCustomer
+@{
+    Layout = null;
+}
+
+<div class="h2">Product</div>
+<br>
+
+<div class="card">
+    <form id="frmProduct" method="post" asp-action="Delete">
+        <div class="card-header align-content-center h2">Delete</div>
+        <div class="card-body">
+            <input type="hidden" name="Id" value="@Model.IntCustomerId" />
+            <p class="h3">Are you SURE want to remove Customer?</p>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-danger" id="btnSave">Remove<i class="fas fa-trash-alt"></i></button>
+            <button type="Button" class="btn btn-primary" id="btnCancel">Cancel</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    $("#btnCancel").click(function () {
+        $("#MyModal").modal("hide");
+    });
+</script>

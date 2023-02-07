@@ -1,0 +1,49 @@
+﻿@using KalbeShop.ViewModels
+
+@{
+    Layout = null;
+}
+
+<div class="h2">Add Data</div>
+<br>
+<div class="card">
+    <form id="frmVariant" method="post" asp-action="Add">
+        <div class="card-header">Create New</div>
+        <div class="card-body">
+            <div class="mb-3">
+                <label>Customer Name</label>
+                <select name="IntCustomerId" class="form-control" id="CategoryId">
+                    <option value="">-- Produk --</option>
+                    @foreach (VMCustomer cust in ViewBag.customer)
+                    {
+                            <option value="@cust.IntCustomerId">@cust.TxtCustomerName</option>
+                    }
+                </select>
+            </div>
+           <div class="mb-3">
+                <label>Produk</label>
+                <select name="IntProductId" class="form-control" id="CategoryId">
+                    <option value="">-- Produk --</option>
+                    @foreach (VMProduk produk in ViewBag.produk)
+                    {
+                            <option value="@produk.IntProductId">@produk.TxtProductName</option>
+                    }
+                </select>
+            </div>
+            <div class="mb-3">
+                <label>Quantity</label>
+                <input type="text" name="intQty" class="form-control" required />
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary" id="btnSave">Create</button>
+            <button type="button" class="btn btn-primary" id="btnCancel"> Cancel </button>
+        </div>
+    </form>
+</div>
+
+<script>
+    $("#btnCancel").click(function () {
+        $("#MyModal").modal("hide");
+    });
+</script>
